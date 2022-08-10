@@ -1,5 +1,4 @@
 from distutils.core import setup
-import setuptools
 
 setup(
   name = 'NBSapi', 
@@ -10,7 +9,7 @@ setup(
   author = 'nacer baaziz', 
   author_email = 'nacerbaaziz@ng-space.com', 
   url = 'https://github.com/baaziznasser/nbsapi', 
-  download_url = 'https://github.com/baaziznasser/nbsapi/archive/refs/tags/1.1.tar.gz', 
+  download_url = 'https://github.com/baaziznasser/nbsapi/archive/refs/tags/0.1.tar.gz', 
   keywords = ['nbsapi', 'NBSapi', 'Sapi', 'tts', 'python text to speech', 'audio', 'screen reader', 'voices', 'sapi5', 'spvoice'], 
   install_requires=[            
           'pywin32',

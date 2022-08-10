@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "NBSapi"
+version = "0.1"
+authors = [
+  { name="Nacer Baaziz", email="nacerbaaziz@ng-space.com" },
+]
+description = "a python library that helps you to control the sapi5 TTS"
+readme = "README.md"
+license = { file="LICENSE.txt" }
+requires-python = ">=3.4"
+classifiers = [
+    'Development Status :: 5 - Production/Stable', 
+    'Intended Audience :: Developers',      
+    'Topic :: Software Development :: Build Tools', 
+    "Programming Language :: Python :: 3", 
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)", 
+    "Operating System :: Operating System :: Microsoft :: Windows", 
+]
+
+[project.urls]
+"Homepage" = "https://github.com/baaziznasser/nbsapi"
+"Bug Tracker" = "https://github.com/baaziznasser/nbsapi/issues"
