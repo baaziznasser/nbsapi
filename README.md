@@ -12,8 +12,8 @@ to use the library you need to import it
 	TTS.Speak("hello")  return
 
 ## whats new
-*added examples within the tests folder
-*updated setup file and requirements
+* added examples within the tests folder
+* updated setup file and requirements
 
 ## class functions
 this library has a lot of functions that make the sapi 5 tts easy
