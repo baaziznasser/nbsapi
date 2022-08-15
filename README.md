@@ -6,12 +6,15 @@ it currently working only on windows with sapi5
 to use the NBSapi you just need to install the pywin32 library by using\
 pip install pywin32
 ## usage
-to use the library you need to import it
+to use the library you need to import it\
 	from NBSapi import NBSapi\
 	tts = NBSapi()\
 	TTS.Speak("hello")
 
 ## whats new
+* change GetVoices function to become customizable
+* Changed SetVoice Function to Become customizable
+* changed the pywin32 by a more smaller helper library
 * added examples within the tests folder
 * updated setup file and requirements
 
@@ -44,8 +47,9 @@ GetVoice()\
 get the current voice information as a dict
 
 ### SetVoice
-SetVoice(voice (index or object), byindex (int))\
-Set the current voice, even by object or by index starting from 0
+SetVoice(voice (index, description, attribute, or object), key ("by_index", "by_description", "by_attribute", or "" for voice object))\
+Set the current voice, even by description, by attribute, by index starting from 0, or by object
+
 
 ### GetVolume
 GetVolume()\
@@ -64,9 +68,10 @@ SetRate(Rate (int))\
 Set the Rate of the voice Between -10 and 10
 
 ### GetVoices
-GetVoices()\
+GetVoices(attrs = "")\
 Get a list of dicts, each item has a voice information\
-so, you can use this list indexes to set the voice, it has the same order.
+so, you can use this list indexes to set the voice, it has the same order.\
+here also you can use attributes to get just the voices you need (take a look to tests folder)
 
 ### GetAttribute
 GetAttribute(attr (string))\
