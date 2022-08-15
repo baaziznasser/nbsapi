@@ -6,4 +6,9 @@ tts = NBSapi.NBSapi()
 voices = tts.GetVoices()
 for voice in voices:
 	print(voice["Name"])
-time.sleep(10)
+time.sleep(5)
+#get all english voices only
+voices = tts.GetVoices("Language=409")
+for voice in voices:
+	print(voice["Name"])
+time.sleep(5)
