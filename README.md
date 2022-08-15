@@ -3,8 +3,8 @@
 the NBSapi is a python library that can help you to convert your text to speech, where you can hear it directly or save it to an audio file.\
 it currently working only on windows with sapi5
 ## requirements
-to use the NBSapi you just need to install the pywin32 library by using\
-pip install pywin32
+to use the NBSapi you just need to install the comtypes library by using\
+pip install comtypes
 ## usage
 to use the library you need to import it\
 	from NBSapi import NBSapi\
