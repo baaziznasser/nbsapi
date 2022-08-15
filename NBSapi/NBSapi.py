@@ -11,7 +11,7 @@ nacersttile@gmail.com
 ### starting code
 
 #import needed libraries
-from win32com.client import Dispatch
+import comtypes.client as c_c
 
 ## consts
 #speak flags
@@ -63,22 +63,23 @@ SRSEIsSpeaking = 2
 class NBSapi():
 ## call the __init__ function and load the sapi class
 	def __init__(self):
-		self.tts = Dispatch("Sapi.SpVoice")
+		self.tts = c_c.CreateObject("Sapi.SpVoice")
 
 #function to get the main sapi class as an object
 	def GetObject(self):
 		return self.tts
 
 #get all the sapi5 registered voices as a list of dicts
-	def GetVoices(self):
+	def GetVoices(self, attrs = ""):
 		self.res = list()
 		self.thisres = dict()
-		for voice in self.tts.GetVoices():
+		for voice in self.tts.GetVoices(attrs):
 			self.thisres = dict()
 			self.thisres["Name"] = voice.GetAttribute("Name")
 			self.thisres["Age"] = voice.GetAttribute("Age")
 			self.thisres["Gender"] = voice.GetAttribute("Gender")
 			self.thisres["Language"] = voice.GetAttribute("Language")
+			self.thisres["Description"] = voice.GetDescription()
 			self.thisres["Id"] = voice.Id
 			self.thisres["Vendor"] = voice.GetAttribute("Vendor")
 			self.thisres["Version"] = voice.GetAttribute("Version")
@@ -93,14 +94,15 @@ class NBSapi():
 		self.thisres["Age"] = self.thisvoice.GetAttribute("Age")
 		self.thisres["Gender"] = self.thisvoice.GetAttribute("Gender")
 		self.thisres["Language"] = self.thisvoice.GetAttribute("Language")
+		self.thisres["Description"] = self.thisvoice.GetDescription()
 		self.thisres["Id"] = self.thisvoice.Id
 		self.thisres["Vendor"] = self.thisvoice.GetAttribute("Vendor")
 		self.thisres["Version"] = self.thisvoice.GetAttribute("Version")
 		return self.thisres
 
 #set the current voice even by object or index or id
-	def SetVoice(self, voice, byindex = True):
-		if byindex:
+	def SetVoice(self, voice, key = "by_index"):
+		if key == "by_index":
 			voice = int(voice)
 			if voice < 0:
 				voice = 0
@@ -108,9 +110,22 @@ class NBSapi():
 			if voice > self.v_count:
 				voice = self.v_count
 			self.tts.Voice = self.tts.GetVoices().Item(voice)
+		elif key == "by_attribute":
+			self.gt_voice = self.tts.GetVoices(voice)
+			if self.gt_voice.Count == 0:
+				return 0
+			self.tts.Voice = self.gt_voice.Item(0)
+
+		elif key == "by_description":
+			self.gt_voice = self.tts.GetVoices()
+			for vd in self.gt_voice:
+				if vd.GetDescription() == voice:
+					print(vd.GetDescription())
+					self.tts.Voice = vd
+					break
 		else:
 			self.tts.Voice = voice
-		return self.tts.Voice
+		return self.GetVoice()
 
 #get an attribute of the current voice
 	def GetAttribute(self, attr):
@@ -150,7 +165,7 @@ class NBSapi():
 
 #save the text as wave file
 	def SpeakToFile(self, text, filepath, flags = SVSFlagsAsync):
-		self.ObjFile = Dispatch("SAPI.SPFileStream")
+		self.ObjFile = c_c.CreateObject("SAPI.SPFileStream")
 		self.ObjFile.Format.Type = 39
 		self.crntout = self.tts.AudioOutputStream
 		outobj = self.ObjFile.Open(filepath, 3)

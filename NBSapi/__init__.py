@@ -1,1 +1,1 @@
-from .NBSapi import NBSapi
+from .NBSapi import *
