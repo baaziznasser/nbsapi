@@ -10,7 +10,7 @@ authors = [
 ]
 description = "a python library that helps you to control the sapi5 TTS"
 readme = "README.md"
-license = { file="LICENSE.txt" }
+license = "LGPL-3.0-or-later"
 requires-python = ">=3.4"
 classifiers = [
     'Development Status :: 5 - Production/Stable', 
