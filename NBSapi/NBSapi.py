@@ -61,20 +61,25 @@ SRSEIsSpeaking = 2
 #creating main class
 
 class NBSapi():
-## call the __init__ function and load the sapi class
+	## call the __init__ function and load the sapi class
 	def __init__(self):
+		#load tts
 		self.tts = c_c.CreateObject("Sapi.SpVoice")
+		self.tts.AlertBoundary = 32
 
-#function to get the main sapi class as an object
+	#function to get the main sapi class as an object
 	def GetObject(self):
 		return self.tts
 
-#get all the sapi5 registered voices as a list of dicts
+	#get all the sapi5 registered voices as a list of dicts
 	def GetVoices(self, attrs = ""):
 		self.res = list()
 		self.thisres = dict()
+		loop through voices
 		for voice in self.tts.GetVoices(attrs):
 			self.thisres = dict()
+
+			#get voice info
 			self.thisres["Name"] = voice.GetAttribute("Name")
 			self.thisres["Age"] = voice.GetAttribute("Age")
 			self.thisres["Gender"] = voice.GetAttribute("Gender")
@@ -86,7 +91,7 @@ class NBSapi():
 			self.res.append(self.thisres)
 		return self.res
 
-#get the current voice information as dict
+	#get the current voice information as dict
 	def GetVoice(self):
 		self.thisvoice = self.tts.Voice
 		self.thisres = dict()
@@ -100,8 +105,9 @@ class NBSapi():
 		self.thisres["Version"] = self.thisvoice.GetAttribute("Version")
 		return self.thisres
 
-#set the current voice even by object or index or id
+	#set the current voice even by (object, index, attribute, description, or id)
 	def SetVoice(self, voice, key = "by_index"):
+		#check the method that will use
 		if key == "by_index":
 			voice = int(voice)
 			if voice < 0:
@@ -110,6 +116,7 @@ class NBSapi():
 			if voice > self.v_count:
 				voice = self.v_count
 			self.tts.Voice = self.tts.GetVoices().Item(voice)
+
 		elif key == "by_attribute":
 			self.gt_voice = self.tts.GetVoices(voice)
 			if self.gt_voice.Count == 0:
@@ -127,15 +134,15 @@ class NBSapi():
 			self.tts.Voice = voice
 		return self.GetVoice()
 
-#get an attribute of the current voice
+	#get an attribute of the current voice
 	def GetAttribute(self, attr):
 		return self.tts.Voice.GetAttribute(attr)
 
-#get the volume of the sapi class
+	#get the volume of the sapi object
 	def GetVolume(self):
 		return self.tts.Volume
 
-#set the volume
+	#set the volume
 	def SetVolume(self, volume):
 		volume = int(volume)
 		if volume < 0:
@@ -145,10 +152,11 @@ class NBSapi():
 		self.tts.Volume = volume
 		return self.tts.Volume
 
-#get the voice rate
+	#get the voice rate
 	def GetRate(self):
 		return self.tts.Rate
-#change the rate of the voice
+
+	#change the rate of the voice
 	def SetRate(self, rate):
 		rate = int(rate)
 		if rate < -10:
@@ -158,12 +166,12 @@ class NBSapi():
 		self.tts.Rate = rate
 		return self.tts.Rate
 
-#speak a text
+	#speak a text
 	def Speak(self, text, flags = SVSFDefault):
 		self.tts.Speak(text, flags)
 		return 1
 
-#save the text as wave file
+	#save the text as wave file
 	def SpeakToFile(self, text, filepath, flags = SVSFlagsAsync):
 		self.ObjFile = c_c.CreateObject("SAPI.SPFileStream")
 		self.ObjFile.Format.Type = 39
@@ -175,16 +183,33 @@ class NBSapi():
 		self.tts.AudioOutputStream = self.crntout
 		return 1
 
-#pause speech
+	#pause speech
 	def Pause(self):
 		return self.tts.Pause()
 
-#resume speech
+	#resume speech
 	def Resume(self):
 		return self.tts.Resume()
-#stop the speech
+
+	#stop the speech
 	def Stop(self):
-		return self.Speak("", SVSFPurgeBeforeSpeak)
+		#get current voice settings
+		crnt_vc = self.tts.Voice
+		crnt_vlm = self.tts.Volume
+		crnt_rt = self.tts.Rate
+
+		#unload the spVoice object
+		self.tts = None
+
+		#recreate the SPVoice object
+		self.tts = c_c.CreateObject("Sapi.SpVoice")
+
+		#restore the old voice settings
+		self.tts.Voice = crnt_vc
+		self.tts.Volume = crnt_vlm
+		self.tts.Rate = crnt_rt
+		self.tts.AlertBoundary = 32
+
 #get status
 	def GetStatus(self, Property = STS_RunningState):
 		return eval("self.tts.Status." + Property)
