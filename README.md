@@ -7,20 +7,20 @@ to use the NBSapi you just need to install the comtypes library by using\
 pip install comtypes
 ## install NBSapi
 to install NBSapi you can use PIP\
-	pip install NBSapi
+pip install NBSapi
 ## usage
 to use the library you need to import it\
-	from NBSapi import NBSapi
-	import time
-	#load the class
-	tts = NBSapi()
-	#speak a text and wait
-	TTS.Speak("hello")
-	#speak without wait, (note: this step is required if you want to control the speech)
-	TTS.Speak("hello", 1)
-	#wait 0.1 sec before stop the speech
-	time.sleep(0.1)
-	TTS.Stop()
+	from NBSapi import NBSapi\
+	import time\
+	#load the class\
+TTS = NBSapi()\
+#speak a text and wait\
+TTS.Speak("hello")\
+#speak without wait, (note: this step is required if you want to control the speech)\
+TTS.Speak("hello", 1)\
+#wait 0.1 sec before stop the speech\
+time.sleep(0.1)\
+TTS.Stop()\
 
 ## whats new
 * the stop function was changed to be working in all cases
