@@ -20,7 +20,11 @@ TTS.Speak("hello")\
 TTS.Speak("hello", 1)\
 #wait 0.1 sec before stop the speech\
 time.sleep(0.1)\
+<<<<<<< HEAD
 TTS.Stop()
+=======
+TTS.Stop()\
+>>>>>>> 70dd0283c63533fe21ae77ba98d57214405ee687
 
 ## whats new
 * the stop function was changed to be working in all cases
