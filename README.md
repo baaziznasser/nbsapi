@@ -5,18 +5,26 @@ it currently working only on windows with sapi5
 ## requirements
 to use the NBSapi you just need to install the comtypes library by using\
 pip install comtypes
+## install NBSapi
+to install NBSapi you can use PIP\
+	pip install NBSapi
 ## usage
 to use the library you need to import it\
-	from NBSapi import NBSapi\
-	tts = NBSapi()\
+	from NBSapi import NBSapi
+	import time
+	#load the class
+	tts = NBSapi()
+	#speak a text and wait
 	TTS.Speak("hello")
+	#speak without wait, (note: this step is required if you want to control the speech)
+	TTS.Speak("hello", 1)
+	#wait 0.1 sec before stop the speech
+	time.sleep(0.1)
+	TTS.Stop()
 
 ## whats new
-* change GetVoices function to become customizable
-* Changed SetVoice Function to Become customizable
-* changed the pywin32 by a more smaller helper library
-* added examples within the tests folder
-* updated setup file and requirements
+* the stop function was changed to be working in all cases
+* modified comments to became more humen redable, and added new comments to make the code more cleer.
 
 ## class functions
 this library has a lot of functions that make the sapi 5 tts easy
