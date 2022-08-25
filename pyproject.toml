@@ -4,14 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "NBSapi"
-version = "0.3"
+version = "0.4"
 authors = [
   { name="Nacer Baaziz", email="nacerbaaziz@ng-space.com" },
 ]
 description = "a python library that helps you to control the sapi5 TTS"
 readme = "README.md"
-license = "LGPL-3.0-or-later"
-requires-python = ">=3.4"
+requires-python = ">=3"
 classifiers = [
     'Development Status :: 5 - Production/Stable', 
     'Intended Audience :: Developers',      
