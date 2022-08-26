@@ -3,13 +3,13 @@ from distutils.core import setup
 setup(
   name = 'NBSapi', 
   packages = ['NBSapi'], 
-  version = '0.4', 
+  version = '0.5', 
   license=' GPL-3.0', 
   description = 'a python library that helps you to control the sapi5 TTS', 
   author = 'nacer baaziz', 
   author_email = 'nacerbaaziz@ng-space.com', 
   url = 'https://github.com/baaziznasser/nbsapi', 
-  download_url = 'https://github.com/baaziznasser/nbsapi/archive/refs/tags/0.4.tar.gz', 
+  download_url = 'https://github.com/baaziznasser/nbsapi/archive/refs/tags/0.5.tar.gz', 
   keywords = ['nbsapi', 'NBSapi', 'Sapi', 'tts', 'python text to speech', 'audio', 'screen reader', 'voices', 'sapi5', 'spvoice', 'text to speech', 'audio book'], 
   install_requires=[            
           'comtypes',

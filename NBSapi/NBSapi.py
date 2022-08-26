@@ -75,7 +75,7 @@ class NBSapi():
 	def GetVoices(self, attrs = ""):
 		self.res = list()
 		self.thisres = dict()
-		loop through voices
+		#loop through voices
 		for voice in self.tts.GetVoices(attrs):
 			self.thisres = dict()
 
