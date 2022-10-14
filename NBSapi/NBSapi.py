@@ -98,14 +98,17 @@ class NBSapi():
 			self.thisres = dict()
 
 			#get voice info
-			self.thisres["Name"] = voice.GetAttribute("Name")
-			self.thisres["Age"] = voice.GetAttribute("Age")
-			self.thisres["Gender"] = voice.GetAttribute("Gender")
-			self.thisres["Language"] = voice.GetAttribute("Language")
-			self.thisres["Description"] = voice.GetDescription()
-			self.thisres["Id"] = voice.Id
-			self.thisres["Vendor"] = voice.GetAttribute("Vendor")
-			self.thisres["Version"] = voice.GetAttribute("Version")
+			try:
+				self.thisres["Name"] = voice.GetAttribute("Name")
+				self.thisres["Age"] = voice.GetAttribute("Age")
+				self.thisres["Gender"] = voice.GetAttribute("Gender")
+				self.thisres["Language"] = voice.GetAttribute("Language")
+				self.thisres["Description"] = voice.GetDescription()
+				self.thisres["Id"] = voice.Id
+				self.thisres["Vendor"] = voice.GetAttribute("Vendor")
+				self.thisres["Version"] = voice.GetAttribute("Version")
+			except:
+				pass
 			self.res.append(self.thisres)
 		return self.res
 
@@ -115,14 +118,17 @@ class NBSapi():
 			return {}
 		self.thisvoice = self.tts.Voice
 		self.thisres = dict()
-		self.thisres["Name"] = self.thisvoice.GetAttribute("Name")
-		self.thisres["Age"] = self.thisvoice.GetAttribute("Age")
-		self.thisres["Gender"] = self.thisvoice.GetAttribute("Gender")
-		self.thisres["Language"] = self.thisvoice.GetAttribute("Language")
-		self.thisres["Description"] = self.thisvoice.GetDescription()
-		self.thisres["Id"] = self.thisvoice.Id
-		self.thisres["Vendor"] = self.thisvoice.GetAttribute("Vendor")
-		self.thisres["Version"] = self.thisvoice.GetAttribute("Version")
+		try:
+			self.thisres["Name"] = self.thisvoice.GetAttribute("Name")
+			self.thisres["Age"] = self.thisvoice.GetAttribute("Age")
+			self.thisres["Gender"] = self.thisvoice.GetAttribute("Gender")
+			self.thisres["Language"] = self.thisvoice.GetAttribute("Language")
+			self.thisres["Description"] = self.thisvoice.GetDescription()
+			self.thisres["Id"] = self.thisvoice.Id
+			self.thisres["Vendor"] = self.thisvoice.GetAttribute("Vendor")
+			self.thisres["Version"] = self.thisvoice.GetAttribute("Version")
+		except:
+			pass
 		return self.thisres
 
 	#set the current voice even by (object, index, attribute, description, or id)
