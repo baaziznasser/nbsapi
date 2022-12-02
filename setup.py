@@ -9,7 +9,7 @@ setup(
   author = 'nacer baaziz', 
   author_email = 'nacerbaaziz@ng-space.com', 
   url = 'https://github.com/baaziznasser/nbsapi', 
-  download_url = 'https://github.com/baaziznasser/nbsapi/archive/refs/tags/0.5.tar.gz', 
+  download_url = 'https://github.com/baaziznasser/nbsapi/archive/refs/tags/0.6.tar.gz', 
   keywords = ['nbsapi', 'NBSapi', 'Sapi', 'tts', 'python text to speech', 'audio', 'screen reader', 'voices', 'sapi5', 'spvoice', 'text to speech', 'audio book'], 
   install_requires=[            
           'comtypes',
