@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
   name = 'NBSapi', 
   packages = ['NBSapi'], 
-  version = '0.5', 
+  version = '0.6', 
   license=' GPL-3.0', 
   description = 'a python library that helps you to control the sapi5 TTS', 
   author = 'nacer baaziz', 

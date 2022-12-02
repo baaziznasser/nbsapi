@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "NBSapi"
-version = "0.5"
+version = "0.6"
 authors = [
   { name="Nacer Baaziz", email="nacerbaaziz@ng-space.com" },
 ]

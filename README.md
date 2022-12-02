@@ -24,11 +24,14 @@ time.sleep(0.1)\
 TTS.Stop()
 
 ## whats new
-* the stop function was changed to be working in all cases
-* modified comments to became more humen redable, and added new comments to make the code more cleer.
+* solved a lot of problems
+* added function to check if sapi is avalable and working without any problems
 
 ## class functions
 this library has a lot of functions that make the sapi 5 tts easy
+### is_sapi
+is_sapi()\
+this function will return true or false\
 
 ### Speak
 Speak(text (string), flag (int))\
